@@ -1,0 +1,19 @@
+{
+  "name": "bndl-care",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "cli",
+    "report-ui"
+  ],
+  "scripts": {
+    "build:ui": "npm run build --workspace=report-ui",
+    "build:cli": "npm run build --workspace=cli",
+    "build": "npm run build:ui && npm run build:cli",
+    "dev:ui": "npm run dev --workspace=report-ui",
+    "dev:cli": "npm run dev --workspace=cli"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

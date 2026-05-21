@@ -1,0 +1,29 @@
+{
+  "name": "@bndl-care/cli",
+  "version": "0.1.0",
+  "description": "BndlCare CLI — 번들 분석 및 리포트 생성 도구",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "bndl-care": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "@google/generative-ai": "^0.21.0",
+    "ora": "^8.1.1",
+    "picocolors": "^1.1.1",
+    "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
