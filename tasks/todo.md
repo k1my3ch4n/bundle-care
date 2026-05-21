@@ -13,17 +13,11 @@
 
 > `cli/` 디렉토리: Node.js + TypeScript 기반 CLI 도구
 
-- [ ] `cli/package.json` 작성
-  - `bin` 스크립트(`bndl-care`) 지정
-  - 의존성: `commander`, `picocolors`, `ora`, `@google/generative-ai`
-  - devDependencies: `typescript`, `tsx`, `@types/node`
-- [ ] `cli/tsconfig.json` 작성 (Node.js 타겟, ESM 모듈)
-- [ ] `cli/src/index.ts` — CLI 엔트리포인트
-  - `commander` 로 명령어 및 옵션 정의 (`--config`, `--no-ai`, `--open`)
-- [ ] `cli/src/config.ts` — `bndlcare.config.json` 로드 및 파싱
-  - 최대 번들 사이즈, Gemini API 키, 경고 임계값 설정 구조 정의
-- [ ] `cli/src/utils/logger.ts` — 터미널 스타일링 출력
-  - `picocolors` + `ora` 활용한 spinner, 성공/경고/에러 로그
+- [x] `cli/package.json` 작성
+- [x] `cli/tsconfig.json` 작성 (NodeNext ESM 모듈)
+- [x] `cli/src/index.ts` — CLI 엔트리포인트 (commander, --config / --no-ai / --no-open)
+- [x] `cli/src/config.ts` — `bndlcare.config.json` 로드 및 파싱
+- [x] `cli/src/utils/logger.ts` — 터미널 스타일링 출력 (picocolors + ora)
 
 ---
 
