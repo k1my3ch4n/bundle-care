@@ -2,6 +2,7 @@
   "name": "@bndl-care/cli",
   "version": "0.1.0",
   "description": "BndlCare CLI — 번들 분석 및 리포트 생성 도구",
+  "type": "module",
   "main": "dist/index.js",
   "bin": {
     "bndl-care": "dist/index.js"
