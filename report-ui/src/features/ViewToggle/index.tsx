@@ -1,22 +1,23 @@
-import { useReportStore, type ViewMode } from "../../entities/report/model/store";
+import { useIsFsdProject, useViewMode, useSetViewMode } from "../../entities/report/model/hooks";
+import type { ViewMode } from "../../entities/report/model/store";
+
+const VIEW_OPTIONS: { label: string; value: ViewMode }[] = [
+  { label: "번들 트리맵", value: "default" },
+  { label: "FSD 아키텍처", value: "fsd" },
+];
 
 export function ViewToggle() {
-  const viewMode = useReportStore((state) => state.viewMode);
-  const setViewMode = useReportStore((state) => state.setViewMode);
-  const isFsdProject = useReportStore((state) => state.reportData?.isFsdProject ?? false);
+  const viewMode = useViewMode();
+  const setViewMode = useSetViewMode();
+  const isFsdProject = useIsFsdProject();
 
   if (!isFsdProject) {
     return null;
   }
 
-  const options: { label: string; value: ViewMode }[] = [
-    { label: "번들 트리맵", value: "default" },
-    { label: "FSD 아키텍처", value: "fsd" },
-  ];
-
   return (
     <nav aria-label="뷰 전환" className="flex rounded-lg border border-gray-200 bg-gray-50 p-1">
-      {options.map((option) => (
+      {VIEW_OPTIONS.map((option) => (
         <button
           key={option.value}
           onClick={() => setViewMode(option.value)}

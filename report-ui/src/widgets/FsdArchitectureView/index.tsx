@@ -1,4 +1,4 @@
-import { useReportStore } from "../../entities/report/model/store";
+import { useFsdLayers, useIsFsdProject } from "../../entities/report/model/hooks";
 import { Badge } from "../../shared/components/Badge";
 import type { FsdLayerStat } from "../../entities/report/model/types";
 
@@ -18,8 +18,8 @@ const LAYER_COLORS: Record<FsdLayerStat["layer"], string> = {
 const SHARED_BLOAT_THRESHOLD = 0.4;
 
 export function FsdArchitectureView() {
-  const fsdLayers = useReportStore((state) => state.reportData?.fsdLayers ?? []);
-  const isFsdProject = useReportStore((state) => state.reportData?.isFsdProject ?? false);
+  const fsdLayers = useFsdLayers();
+  const isFsdProject = useIsFsdProject();
 
   if (!isFsdProject || fsdLayers.length === 0) {
     return (
@@ -82,7 +82,7 @@ export function FsdArchitectureView() {
       </div>
 
       <footer className="border-t border-gray-100 pt-3 text-right text-xs text-gray-400">
-        총 {totalSize.toFixed(1)} KB · {fsdLayers.reduce((sum, l) => sum + l.fileCount, 0)} 파일
+        총 {totalSize.toFixed(1)} KB · {fsdLayers.reduce((sum, layer) => sum + layer.fileCount, 0)} 파일
       </footer>
     </section>
   );

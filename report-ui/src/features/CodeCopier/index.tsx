@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "../../shared/components/Button";
 
+const COPY_FEEDBACK_DURATION_MS = 2000;
+
 interface CodeCopierProps {
   code: string;
 }
@@ -11,7 +13,7 @@ export function CodeCopier({ code }: CodeCopierProps) {
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), COPY_FEEDBACK_DURATION_MS);
   };
 
   return (

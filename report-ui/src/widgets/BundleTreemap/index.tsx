@@ -1,13 +1,22 @@
 import { useEffect, useRef } from "react";
 import * as d3Hierarchy from "d3-hierarchy";
-import { useReportStore } from "../../entities/report/model/store";
+import {
+  useReportData,
+  useSelectedChunkName,
+  useSetSelectedChunkName,
+} from "../../entities/report/model/hooks";
 import { buildTree } from "../../shared/utils/buildTree";
+import { createSVGElement, truncateLabel } from "../../shared/utils/svgHelper";
 import type { ChunkInfo } from "../../entities/report/model/types";
 
-const COLORS = [
+const TREEMAP_COLORS = [
   "#3b82f6", "#6366f1", "#8b5cf6", "#ec4899",
   "#f59e0b", "#10b981", "#06b6d4", "#f97316",
 ];
+
+const MIN_NODE_WIDTH = 40;
+const MIN_NODE_HEIGHT = 20;
+const LABEL_FONT_SIZE = "11";
 
 interface TreemapProps {
   width?: number;
@@ -16,9 +25,9 @@ interface TreemapProps {
 
 export function BundleTreemap({ width = 800, height = 480 }: TreemapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const reportData = useReportStore((state) => state.reportData);
-  const selectedChunkName = useReportStore((state) => state.selectedChunkName);
-  const setSelectedChunkName = useReportStore((state) => state.setSelectedChunkName);
+  const reportData = useReportData();
+  const selectedChunkName = useSelectedChunkName();
+  const setSelectedChunkName = useSetSelectedChunkName();
 
   const selectedChunk: ChunkInfo | null =
     reportData?.chunks.find((chunk) => chunk.name === selectedChunkName) ?? null;
@@ -45,9 +54,10 @@ export function BundleTreemap({ width = 800, height = 480 }: TreemapProps) {
 
     const leaves = root.leaves() as d3Hierarchy.HierarchyRectangularNode<typeof treeData>[];
 
-    const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svgEl.setAttribute("width", String(width));
-    svgEl.setAttribute("height", String(height));
+    const svgEl = createSVGElement("svg", {
+      width: String(width),
+      height: String(height),
+    });
 
     leaves.forEach((leaf, index) => {
       const nodeWidth = leaf.x1 - leaf.x0;
@@ -56,34 +66,37 @@ export function BundleTreemap({ width = 800, height = 480 }: TreemapProps) {
         return;
       }
 
-      const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      g.setAttribute("transform", `translate(${leaf.x0},${leaf.y0})`);
+      const g = createSVGElement("g", {
+        transform: `translate(${leaf.x0},${leaf.y0})`,
+      });
 
-      const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      rect.setAttribute("width", String(nodeWidth));
-      rect.setAttribute("height", String(nodeHeight));
-      rect.setAttribute("fill", COLORS[index % COLORS.length]);
-      rect.setAttribute("fill-opacity", "0.8");
-      rect.setAttribute("stroke", "#fff");
-      rect.setAttribute("stroke-width", "1");
+      const rect = createSVGElement("rect", {
+        width: String(nodeWidth),
+        height: String(nodeHeight),
+        fill: TREEMAP_COLORS[index % TREEMAP_COLORS.length],
+        "fill-opacity": "0.8",
+        stroke: "#fff",
+        "stroke-width": "1",
+      });
       rect.style.cursor = "pointer";
 
-      const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-      title.textContent = `${leaf.data.path}\n${((leaf.value ?? 0) / 1024).toFixed(1)} KB`;
-      g.appendChild(title);
+      const titleEl = createSVGElement("title", {});
+      titleEl.textContent = `${leaf.data.path}\n${((leaf.value ?? 0) / 1024).toFixed(1)} KB`;
+
+      g.appendChild(titleEl);
       g.appendChild(rect);
 
-      if (nodeWidth > 40 && nodeHeight > 20) {
-        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        text.setAttribute("x", String(nodeWidth / 2));
-        text.setAttribute("y", String(nodeHeight / 2));
-        text.setAttribute("text-anchor", "middle");
-        text.setAttribute("dominant-baseline", "middle");
-        text.setAttribute("fill", "#fff");
-        text.setAttribute("font-size", "11");
-        text.setAttribute("font-weight", "500");
-        text.textContent =
-          leaf.data.name.length > 20 ? leaf.data.name.slice(0, 18) + "…" : leaf.data.name;
+      if (nodeWidth > MIN_NODE_WIDTH && nodeHeight > MIN_NODE_HEIGHT) {
+        const text = createSVGElement("text", {
+          x: String(nodeWidth / 2),
+          y: String(nodeHeight / 2),
+          "text-anchor": "middle",
+          "dominant-baseline": "middle",
+          fill: "#fff",
+          "font-size": LABEL_FONT_SIZE,
+          "font-weight": "500",
+        });
+        text.textContent = truncateLabel(leaf.data.name);
         g.appendChild(text);
       }
 
