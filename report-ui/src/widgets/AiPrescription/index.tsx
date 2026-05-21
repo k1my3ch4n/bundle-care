@@ -1,10 +1,11 @@
-import { useReportStore } from "../../entities/report/model/store";
+import { useAiPrescriptions } from "../../entities/report/model/hooks";
 import { Card } from "../../shared/components/Card";
 import { Badge } from "../../shared/components/Badge";
-import { CodeCopier } from "../../features/CodeCopier";
+import { AlternativesTable } from "./AlternativesTable";
+import { VanillaSnippetBlock } from "./VanillaSnippetBlock";
 
 export function AiPrescription() {
-  const prescriptions = useReportStore((state) => state.reportData?.aiPrescriptions ?? []);
+  const prescriptions = useAiPrescriptions();
 
   if (prescriptions.length === 0) {
     return (
@@ -28,45 +29,11 @@ export function AiPrescription() {
             <p className="text-sm text-gray-600">{prescription.reasoning}</p>
 
             {prescription.alternatives.length > 0 && (
-              <div>
-                <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
-                  대안 라이브러리
-                </h4>
-                <div className="overflow-hidden rounded-lg border border-gray-200">
-                  <table className="w-full text-sm">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th className="px-3 py-2 text-left font-medium text-gray-600">라이브러리</th>
-                        <th className="px-3 py-2 text-right font-medium text-gray-600">크기</th>
-                        <th className="px-3 py-2 text-left font-medium text-gray-600">설명</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-100">
-                      {prescription.alternatives.map((alt) => (
-                        <tr key={alt.name} className="hover:bg-gray-50">
-                          <td className="px-3 py-2 font-medium text-blue-600">{alt.name}</td>
-                          <td className="px-3 py-2 text-right text-gray-500">{alt.sizeKB} KB</td>
-                          <td className="px-3 py-2 text-gray-600">{alt.description}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              <AlternativesTable alternatives={prescription.alternatives} />
             )}
 
             {prescription.vanillaSnippet && (
-              <div>
-                <div className="mb-2 flex items-center justify-between">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                    Vanilla JS 대체 코드
-                  </h4>
-                  <CodeCopier code={prescription.vanillaSnippet} />
-                </div>
-                <pre className="overflow-x-auto rounded-lg bg-gray-900 p-4 text-xs text-gray-100">
-                  <code>{prescription.vanillaSnippet}</code>
-                </pre>
-              </div>
+              <VanillaSnippetBlock code={prescription.vanillaSnippet} />
             )}
           </div>
         </Card>
