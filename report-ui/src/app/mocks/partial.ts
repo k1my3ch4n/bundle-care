@@ -1,4 +1,4 @@
-import type { BndlReportData } from "../../entities/report/model/types";
+import type { BndlReportData } from "@entities/report/model/types";
 
 // AI 처방 없음, FSD 레이어 없음, treeshaking 누수 없음
 export const mockPartial: BndlReportData = {

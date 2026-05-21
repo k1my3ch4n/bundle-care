@@ -1,4 +1,4 @@
-import type { AlternativeLibrary } from "../../entities/report/model/types";
+import type { AlternativeLibrary } from "@entities/report/model/types";
 
 interface AlternativesTableProps {
   alternatives: AlternativeLibrary[];

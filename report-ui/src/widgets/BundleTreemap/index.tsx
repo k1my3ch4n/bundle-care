@@ -4,10 +4,10 @@ import {
   useReportData,
   useSelectedChunkName,
   useSetSelectedChunkName,
-} from "../../entities/report/model/hooks";
-import { buildTree } from "../../shared/utils/buildTree";
-import { createSVGElement, truncateLabel } from "../../shared/utils/svgHelper";
-import type { ChunkInfo } from "../../entities/report/model/types";
+} from "@entities/report/model/hooks";
+import { buildTree } from "@shared/utils/buildTree";
+import { createSVGElement, truncateLabel } from "@shared/utils/svgHelper";
+import type { ChunkInfo } from "@entities/report/model/types";
 
 const TREEMAP_COLORS = [
   "#3b82f6", "#6366f1", "#8b5cf6", "#ec4899",

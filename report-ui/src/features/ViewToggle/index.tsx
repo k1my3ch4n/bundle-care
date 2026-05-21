@@ -1,5 +1,5 @@
-import { useIsFsdProject, useViewMode, useSetViewMode } from "../../entities/report/model/hooks";
-import type { ViewMode } from "../../entities/report/model/store";
+import { useIsFsdProject, useViewMode, useSetViewMode } from "@entities/report/model/hooks";
+import type { ViewMode } from "@entities/report/model/store";
 
 const VIEW_OPTIONS: { label: string; value: ViewMode }[] = [
   { label: "번들 트리맵", value: "default" },

@@ -1,4 +1,4 @@
-import type { BndlReportData } from "../../entities/report/model/types";
+import type { BndlReportData } from "@entities/report/model/types";
 
 // FSD 프로젝트 — 레이어 균형 정상 (shared 비율 20% 이하)
 export const mockFsdHealthy: BndlReportData = {

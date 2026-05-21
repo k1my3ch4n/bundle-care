@@ -1,5 +1,5 @@
-import { Badge } from "../../shared/components/Badge";
-import type { DockerRisk } from "../../entities/report/model/types";
+import { Badge } from "@shared/components/Badge";
+import type { DockerRisk } from "@entities/report/model/types";
 
 interface DockerRiskListProps {
   risks: DockerRisk[];

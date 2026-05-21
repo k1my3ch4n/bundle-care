@@ -1,4 +1,4 @@
-import type { BndlReportData } from "../../entities/report/model/types";
+import type { BndlReportData } from "@entities/report/model/types";
 
 export const mockFull: BndlReportData = {
   generatedAt: "2026-05-21 14:00:00",

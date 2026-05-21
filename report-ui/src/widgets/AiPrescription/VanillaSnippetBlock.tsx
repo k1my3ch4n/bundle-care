@@ -1,4 +1,4 @@
-import { CodeCopier } from "../../features/CodeCopier";
+import { CodeCopier } from "@features/CodeCopier";
 
 interface VanillaSnippetBlockProps {
   code: string;

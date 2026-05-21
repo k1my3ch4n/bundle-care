@@ -4,7 +4,7 @@ import { mockPartial } from "./partial";
 import { mockNoRisk } from "./no-risk";
 import { mockFsdHealthy } from "./fsd-healthy";
 import { mockFsdBloated } from "./fsd-bloated";
-import type { BndlReportData } from "../../entities/report/model/types";
+import type { BndlReportData } from "@entities/report/model/types";
 
 export const MOCKS: Record<string, BndlReportData | null> = {
   full: mockFull,

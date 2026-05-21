@@ -1,1 +1,1 @@
-export const mockEmpty = null;
+﻿export const mockEmpty = null;

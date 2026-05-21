@@ -1,10 +1,10 @@
-import { useReportData, useViewMode } from "../../entities/report/model/hooks";
-import { BundleTreemap } from "../../widgets/BundleTreemap";
-import { AiPrescription } from "../../widgets/AiPrescription";
-import { ViewToggle } from "../../features/ViewToggle";
-import { FsdArchitectureView } from "../../widgets/FsdArchitectureView";
-import { Card } from "../../shared/components/Card";
-import { Badge } from "../../shared/components/Badge";
+import { useReportData, useViewMode } from "@entities/report/model/hooks";
+import { BundleTreemap } from "@widgets/BundleTreemap";
+import { AiPrescription } from "@widgets/AiPrescription";
+import { ViewToggle } from "@features/ViewToggle";
+import { FsdArchitectureView } from "@widgets/FsdArchitectureView";
+import { Card } from "@shared/components/Card";
+import { Badge } from "@shared/components/Badge";
 import { DockerRiskList } from "./DockerRiskList";
 import { TreeshakingLeakList } from "./TreeshakingLeakList";
 

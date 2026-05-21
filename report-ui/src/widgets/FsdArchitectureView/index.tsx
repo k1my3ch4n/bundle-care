@@ -1,6 +1,6 @@
-import { useFsdLayers, useIsFsdProject } from "../../entities/report/model/hooks";
-import { Badge } from "../../shared/components/Badge";
-import type { FsdLayerStat } from "../../entities/report/model/types";
+import { useFsdLayers, useIsFsdProject } from "@entities/report/model/hooks";
+import { Badge } from "@shared/components/Badge";
+import type { FsdLayerStat } from "@entities/report/model/types";
 
 const LAYER_ORDER: FsdLayerStat["layer"][] = [
   "app", "pages", "widgets", "features", "entities", "shared",

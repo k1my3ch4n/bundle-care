@@ -1,6 +1,6 @@
-import { useAiPrescriptions } from "../../entities/report/model/hooks";
-import { Card } from "../../shared/components/Card";
-import { Badge } from "../../shared/components/Badge";
+import { useAiPrescriptions } from "@entities/report/model/hooks";
+import { Card } from "@shared/components/Card";
+import { Badge } from "@shared/components/Badge";
 import { AlternativesTable } from "./AlternativesTable";
 import { VanillaSnippetBlock } from "./VanillaSnippetBlock";
 

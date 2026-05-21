@@ -1,4 +1,4 @@
-import type { TreeshakingLeak } from "../../entities/report/model/types";
+import type { TreeshakingLeak } from "@entities/report/model/types";
 
 interface TreeshakingLeakListProps {
   leaks: TreeshakingLeak[];

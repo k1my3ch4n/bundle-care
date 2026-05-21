@@ -1,4 +1,4 @@
-import type { BndlReportData } from "../../entities/report/model/types";
+import type { BndlReportData } from "@entities/report/model/types";
 
 // Docker 리스크 없음, Tree-shaking 누수 없음, AI 처방 없음
 export const mockNoRisk: BndlReportData = {

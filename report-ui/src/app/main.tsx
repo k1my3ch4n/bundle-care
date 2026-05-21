@@ -1,8 +1,8 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { DashboardPage } from "../pages/DashboardPage";
-import { useReportStore } from "../entities/report/model/store";
+import { DashboardPage } from "@pages/DashboardPage";
+import { useReportStore } from "@entities/report/model/store";
 import { getDevMock } from "./mocks";
 
 function App() {

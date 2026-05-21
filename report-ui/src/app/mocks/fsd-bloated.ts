@@ -1,4 +1,4 @@
-import type { BndlReportData } from "../../entities/report/model/types";
+import type { BndlReportData } from "@entities/report/model/types";
 
 // FSD 프로젝트 — shared 레이어 비대화 (shared 비율 40% 초과)
 export const mockFsdBloated: BndlReportData = {
