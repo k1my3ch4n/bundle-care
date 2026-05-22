@@ -47,22 +47,22 @@
 
 > `report-ui/` 디렉토리: Vite + React + TypeScript + FSD 아키텍처
 
-- [ ] `report-ui/package.json` 작성
+- [x] `report-ui/package.json` 작성
   - 의존성: `react`, `react-dom`, `zustand`, `d3-hierarchy`
   - devDependencies: `vite`, `vite-plugin-singlefile`, `tailwindcss`, `typescript`, `@types/react`
-- [ ] `report-ui/vite.config.ts` — `vite-plugin-singlefile` 적용 (단일 HTML 번들)
-- [ ] `report-ui/tailwind.config.js` 작성
-- [ ] `report-ui/index.html` — 데이터 슬롯(`/* __BNDL_DATA__ */`) 포함한 HTML 뼈대
-- [ ] `report-ui/src/app/index.css` — Tailwind CSS 메인 스타일
-- [ ] `report-ui/src/app/main.tsx` — React 루트 렌더링, `window.__BNDL_DATA__` 주입 확인
+- [x] `report-ui/vite.config.ts` — `vite-plugin-singlefile` 적용 (단일 HTML 번들)
+- [x] `report-ui/tailwind.config.js` 작성
+- [x] `report-ui/index.html` — 데이터 슬롯(`/* __BNDL_DATA__ */`) 포함한 HTML 뼈대
+- [x] `report-ui/src/app/index.css` — Tailwind CSS 메인 스타일
+- [x] `report-ui/src/app/main.tsx` — React 루트 렌더링, `window.__BNDL_DATA__` 주입 확인
 
 ---
 
 ## Phase 5. Report UI — 도메인 모델 및 상태 관리
 
-- [ ] `report-ui/src/entities/report/model/types.ts`
+- [x] `report-ui/src/entities/report/model/types.ts`
   - `BndlReportData`, `ChunkInfo`, `DockerRisk`, `TreeshakingLeak`, `AiPrescription` 타입 정의
-- [ ] `report-ui/src/entities/report/model/store.ts`
+- [x] `report-ui/src/entities/report/model/store.ts`
   - Zustand 스토어: 주입 데이터 보관, 필터링 상태 관리
   - 뷰 모드 상태: `'default' | 'fsd'`
 
@@ -70,34 +70,34 @@
 
 ## Phase 6. Report UI — 공유 컴포넌트 및 유틸리티
 
-- [ ] `report-ui/src/shared/components/` — 공통 UI 컴포넌트
+- [x] `report-ui/src/shared/components/` — 공통 UI 컴포넌트
   - `Button`, `Card`, `Badge`, `Modal`
-- [ ] `report-ui/src/shared/utils/` — 공통 유틸리티
+- [x] `report-ui/src/shared/utils/` — 공통 유틸리티
   - 경로 문자열 → 트리 구조 변환 알고리즘
 
 ---
 
 ## Phase 7. Report UI — 위젯 및 기능 구현
 
-- [ ] `report-ui/src/widgets/BundleTreemap/` — 번들 트리맵 위젯
+- [x] `report-ui/src/widgets/BundleTreemap/` — 번들 트리맵 위젯
   - `d3-hierarchy` 기반 인터랙티브 트리맵 렌더링
   - 청크 선택 시 상세 정보 표시
-- [ ] `report-ui/src/widgets/AiPrescription/` — AI 처방전 위젯
+- [x] `report-ui/src/widgets/AiPrescription/` — AI 처방전 위젯
   - 대안 라이브러리 비교표 렌더링
   - Vanilla JS 스니펫 표시
-- [ ] `report-ui/src/features/ViewToggle/` — 뷰 전환 스위치
+- [x] `report-ui/src/features/ViewToggle/` — 뷰 전환 스위치
   - 기본 모드 ↔ FSD 아키텍처 분석 뷰 전환
-- [ ] `report-ui/src/features/CodeCopier/` — 코드 복사 버튼
+- [x] `report-ui/src/features/CodeCopier/` — 코드 복사 버튼
   - AI 추천 코드를 클립보드에 복사
-- [ ] `report-ui/src/pages/DashboardPage/index.tsx` — 메인 대시보드 레이아웃 조립
+- [x] `report-ui/src/pages/DashboardPage/index.tsx` — 메인 대시보드 레이아웃 조립
 
 ---
 
 ## Phase 8. Report UI — FSD 아키텍처 진단 뷰 (확장 모드)
 
-- [ ] FSD 패턴 자동 감지 로직 (`features/`, `entities/`, `shared/` 디렉토리 존재 여부)
-- [ ] 레이어별(`features`, `entities`, `widgets`, `pages`, `shared`) 용량 집계 및 균형도 시각화
-- [ ] `shared` 레이어 비대화 경고 로직
+- [x] FSD 패턴 자동 감지 로직 (`features/`, `entities/`, `shared/` 디렉토리 존재 여부)
+- [x] 레이어별(`features`, `entities`, `widgets`, `pages`, `shared`) 용량 집계 및 균형도 시각화
+- [x] `shared` 레이어 비대화 경고 로직
 
 ---
 
@@ -109,6 +109,15 @@
   - `bndl-report.html` 로컬 파일 생성
   - `--open` 옵션 시 브라우저 자동 오픈
 - [ ] `cli/assets/template.html` — `report-ui` 빌드 결과물 복사 자동화 스크립트
+
+---
+
+## Phase 9-1. Report UI — 코드 품질 (ESLint 설정)
+
+- [ ] `report-ui/` ESLint 설정 추가
+  - `eslint`, `@typescript-eslint/eslint-plugin`, `eslint-plugin-react-hooks` 설치
+  - `report-ui/.eslintrc.cjs` (또는 `eslint.config.js`) 작성
+  - `package.json` `lint` 스크립트 추가: `"lint": "eslint src --ext ts,tsx"`
 
 ---
 

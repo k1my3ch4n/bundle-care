@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "BndlCare Report UI — 인터랙티브 번들 분석 대시보드",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
