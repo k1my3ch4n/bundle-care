@@ -112,6 +112,15 @@
 
 ---
 
+## Phase 9-1. Report UI — 코드 품질 (ESLint 설정)
+
+- [ ] `report-ui/` ESLint 설정 추가
+  - `eslint`, `@typescript-eslint/eslint-plugin`, `eslint-plugin-react-hooks` 설치
+  - `report-ui/.eslintrc.cjs` (또는 `eslint.config.js`) 작성
+  - `package.json` `lint` 스크립트 추가: `"lint": "eslint src --ext ts,tsx"`
+
+---
+
 ## Phase 10. 통합 빌드 파이프라인
 
 - [ ] 루트 `package.json` 빌드 스크립트 작성
